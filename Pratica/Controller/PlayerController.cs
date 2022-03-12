@@ -7,28 +7,16 @@ using Pratica.Entity;
 
 namespace Pratica.Controller
 {
-    internal class PlayerController
+    public class PlayerController : CharacterController
     {
-        public void TakeDamage(Player player, Enemy enemy)
+        public bool Escape()
         {
-            Console.WriteLine("{0} recebeu {1} de dano", player.Name, enemy.Sword.Damage);
-            player.LifePoints -= enemy.Sword.Damage;
+            DicesController dice = new DicesController();
 
-            Console.WriteLine("Vida Atual: {0}", player.LifePoints);
-        }
-
-        public bool IsDead(Player player)
-        {
-            if (player.LifePoints <= 0)
+            if(dice.Roll(Enum.DiceType.d6) == 6)
                 return true;
 
             return false;
-        }
-
-        public void Escape()
-        {
-            MessageController messageController = new MessageController();
-            
         }
     }
 }

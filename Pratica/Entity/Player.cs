@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pratica.Entity
 {
-    public class Player
+    public class Player : Character
     {
         public Player(int lifePoints, string name, Sword sword)
         {
@@ -15,11 +15,5 @@ namespace Pratica.Entity
             this.Sword = sword;
         }
         
-        public int LifePoints { get; set; }
-
-        public string Name { get; set; }
-
-        public Sword Sword { get; set; }
-
     }
 }

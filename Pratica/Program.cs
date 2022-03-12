@@ -11,7 +11,8 @@ try
     DicesController dicesController = new DicesController();
     PlayerController playerController = new PlayerController();
     EnemyController enemyController = new EnemyController();
-    MessageController messageController = new MessageController(); 
+    MessageController messageController = new MessageController();
+    BattleController battleController = new BattleController();
     
     while (isRuning) 
     {
@@ -19,12 +20,15 @@ try
         while (!enemyController.IsDead(enemy))
         {
             if (dicesController.Roll(player.Sword.QuantityDices, player.Sword.Dice) <= 2)
-                playerController.TakeDamage(player,enemy);
+                battleController.Damage(player,enemy);
             else
-                enemyController.TakeDamage(enemy,player);
+                battleController.Damage(enemy,player);
 
             if (playerController.IsDead(player))
+            {
+                messageController.ClickToContinue();
                 break;
+            }
             messageController.ClickToContinue();
 
         }

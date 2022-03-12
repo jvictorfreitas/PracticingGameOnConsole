@@ -25,5 +25,22 @@ namespace Pratica.Controller
             
             return roll;
         }
+
+        public int Roll(Enum.DiceType Dice)
+        {
+            MessageController messageController = new MessageController();
+            Random random = new Random();
+
+            messageController.ClickToRollTheDice();
+            int roll = 0;
+            for (int i = 0; i < 1; i++)
+            {
+                roll += random.Next(1, ((int)Dice) + 1);
+            }
+
+            Console.WriteLine("Resultado: {0}", roll);
+
+            return roll;
+        }
     }
 }
